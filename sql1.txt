@@ -1,0 +1,115 @@
+-- task1)
+-- İlk olaraq satışı reallaşmış məhsullar üçün bir cədvəl (tabel) 
+-- yaradırıq və bu cədvəlimizin sütun olaraq məhsul idsi, sayı və
+-- dəyəri (1 dənəsinin)  olacaq. Biz isə hər məhsul 
+-- üçün ümumi olan qazancı gətirib sıralamaq lazımdır
+
+-- CREATE TABLE satis (
+--     mehsulid INT,
+--     mehsulsayi INT,
+--     mehsuldeyeri NUMBER(10, 2)
+-- );
+
+-- -- Məlumatları əlavə etmək
+-- INSERT INTO satis (mehsulid, mehsulsayi, mehsuldeyeri) VALUES (2, 6, 70);
+-- INSERT INTO satis (mehsulid, mehsulsayi, mehsuldeyeri) VALUES (5, 3, 26);
+-- INSERT INTO satis (mehsulid, mehsulsayi, mehsuldeyeri) VALUES (8, 6, 32);
+-- INSERT INTO satis (mehsulid, mehsulsayi, mehsuldeyeri) VALUES (1, 15, 12);
+-- INSERT INTO satis (mehsulid, mehsulsayi, mehsuldeyeri) VALUES (2, 9, 7);
+-- INSERT INTO satis (mehsulid, mehsulsayi, mehsuldeyeri) VALUES (3, 13, 70);
+
+-- -- Sorğu ilə ümumi qazancı hesablayıb sıralamaq
+-- SELECT 
+--     mehsulid,
+--     mehsulsayi,
+--     mehsuldeyeri,
+--     (mehsulsayi * mehsuldeyeri) AS umumideyer
+-- FROM 
+--     satis
+-- ORDER BY 
+--     umumideyer DESC;
+
+
+-- task2)
+-- işçilər adında cədvəlimiz olacaq. Sütun olaraq ad,maaş,
+-- departament olacaq. Siz isə departamentinin adı satış olan 
+-- və maaşı 600-dən çox olan şəxslərin maaşını azalan sıra ilə 
+-- sıralıyın
+
+-- CREATE TABLE isciler (
+--     ad VARCHAR(30),
+--     maas INT,
+--     department VARCHAR(30)
+-- );
+
+
+-- INSERT INTO isciler(ad,maas,department) VALUES('NURAY',5000,'AI');
+-- INSERT INTO isciler(ad,maas,department) VALUES('RENA',4500,'IT');
+-- INSERT INTO isciler(ad,maas,department) VALUES('SEMA',400,'KITABCI');
+-- INSERT INTO isciler(ad,maas,department) VALUES('AYDIN',590,'SATICI');
+
+-- SELECT
+-- 	ad,
+-- 	maas,
+-- 	department
+-- FROM isciler  
+-- WHERE department = 'SATICI' AND maas > 600 
+-- ORDER BY 
+--     maas DESC;
+
+-- task3)
+-- kitablar cədvəlimiz olacaq. Sütunları: adı, janrı, nəşr ili
+-- .2015-dən sonra nəşr olunmuş kitbaabları janrına görə artan
+-- sıra ilə sıralıyın
+-- CREATE TABLE kitablar (
+--     adi VARCHAR(100),
+--     janri VARCHAR(50),
+--     nesr_ili INT
+-- );
+-- INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('ezilenler', 'klassik', 2016);
+-- INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('fizika', 'Elmi', 2017);
+-- INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('harry potter', 'Roman', 2014);
+-- INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('romanovlar', 'Tarix', 2018);
+-- INSERT INTO kitablar (adi, janri, nesr_ili) VALUES ('Kimya', 'Elmi', 2020);
+
+-- SELECT
+--     adi,
+--     janri,
+--     nesr_ili
+-- FROM
+--     kitablar
+-- WHERE
+--     nesr_ili > 2015
+-- ORDER BY
+--     janri ASC;
+
+
+
+
+-- task4)
+-- filmlər adlı cədvəlimiz olacaq. Sütunları : ad, çıxış tarixi,
+-- ratinq. Çıxış tarixi 2000-dən kiçik olanları artan sıra və 
+-- ratingi 7-dən böyük olanları azalan sıra ilə sıralıyın
+
+
+CREATE TABLE filmler (
+    ad VARCHAR(100),
+    cixistarixi INT,
+    reytinq FLOAT
+);
+INSERT INTO filmler (ad, cixistarixi, reytinq) VALUES ('INTERSTELLER', 2023, 9);
+INSERT INTO filmler (ad, cixistarixi, reytinq) VALUES ('HARRY POTTER', 2001, 9.0);
+INSERT INTO filmler (ad, cixistarixi, reytinq) VALUES ('FRIENDS', 1999, 7.5);
+INSERT INTO filmler (ad, cixistarixi, reytinq) VALUES ('YESIL YOL', 2018, 6.5);
+INSERT INTO filmler (ad, cixistarixi, reytinq) VALUES ('YARQUNAT', 2020, 7.8);
+
+SELECT
+    ad,
+    cixistarixi,
+    reytinq
+FROM
+    filmler
+WHERE
+    cixistarixi < 2000
+ORDER BY
+    cixistarixi ASC;
